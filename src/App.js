@@ -3,6 +3,7 @@ import './App.css';
 
 import NavBar from './components/NavBar';
 import Card from './components/Card';
+import CardInfo from './components/CardInfo'
 const axios = require('axios');
 
 class App extends React.Component {
@@ -76,6 +77,7 @@ class App extends React.Component {
           ))}
           <div className = "sideBar">
             <h1> Hello World</h1>
+            <CardInfo/>
           </div>
 
 

@@ -9,7 +9,9 @@ export default class CardInfo extends Component {
         }
     }
 
-    
+    componentDidMount(){
+        console.log('Card Info Mounted')
+    }
     render() {
         if(!this.props.show){
             return null;
@@ -17,6 +19,7 @@ export default class CardInfo extends Component {
         return (
             <div>
                 <h1>Card Info</h1>
+                <p>ASDOSDPOSDOPK PAOSD KPASODK ASPDO K:LK:LK ASDLK :S:LDK LSLADKALSDKALKL </p>
             </div>
         )
     }

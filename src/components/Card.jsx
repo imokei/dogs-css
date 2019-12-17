@@ -1,63 +1,59 @@
 import React, { Component } from "react";
-import Modal from 'react-bootstrap/Modal';
 
 import "../styles/Card.css";
 
+import Modal from './Modal';
 import CardInfo from '../components/CardInfo';
 
 export default class Card extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            show: false,
-            
+            isShowing: false,
+
         }
-
-        this.setShow = this.setShow.bind(this);
-        this.test = this.test.bind(this);
+        this.openModalHandler = this.openModalHandler.bind(this);
+        this.closeModalHandler = this.closeModalHandler.bind(this);
     }
 
-    setShow = (displayBool) =>{
-        console.log('setshow was called')
+    openModalHandler = () =>{
+        this.setState({
+            isShowing:true
+        });
     }
-    test = (displayBool) =>{
-        console.log('test was called')
+
+    closeModalHandler = () =>{
+        this.setState({
+            isShowing:false
+        })
     }
 
     componentDidMount() {
+
         //console.log("Card Mounted");
     }
 
     render() {
         return (
             <div className="card">
+               {this.state.isShowing ?<div onClick = {this.closeModalHandler} className = "back-drop"></div>:null}
                 <div className="img" styles={`{"background-image:url("${this.props.imgUrl}");`}></div>
                 <img src={this.props.imgUrl} alt="img"></img>
                 <div className="container">
-                    <h1>
-                        <b>
-                            Dog
-                        </b>
-                        <p>
-                            Dog Info
-                        </p>
-                        <button onClick = {this.test(true)}>More Info</button>
-                        <Modal
-                            show={this.state.show}
-                            onHide={this.test(false)}
-                            dialogClassName = "modal-90w"
-                            aria-labelledby="example-custom-modal-styling-title"
-                        >
-                            <Modal.Header closeButton>
-                                <Modal.Title>Titles</Modal.Title>
-                            </Modal.Header>
-                            <Modal.Body>
-                                <CardInfo/>
-                            </Modal.Body>
+                    <h1>Dog</h1>
+                    <h2>Dog Info</h2>
+               
+                    <button onClick={this.openModalHandler} className = "open-modal-btn">More Info</button>
+               
+                    <Modal
+                        className = "modal"
+                        show={this.state.isShowing}
+                        close={this.closeModalHandler}
+                        Somet random information
+                    >
 
-                        </Modal>
+                    </Modal>
 
-                    </h1>
                 </div>
 
 
