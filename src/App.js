@@ -1,6 +1,7 @@
 import React from 'react';
 import './App.css';
 
+import NavBar from './components/NavBar';
 import Card from './components/Card';
 const axios = require('axios');
 
@@ -59,6 +60,7 @@ class App extends React.Component {
   render() {
     return (
       <div className="App">
+        <NavBar/>
         <h1>Dogs</h1>
         <button onClick={this.handleRandom}>Randomize</button>
         <div className="wrapper">
