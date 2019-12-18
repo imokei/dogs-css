@@ -66,7 +66,7 @@ export default {
       marginBottom: '10px',
       fontSize: '20px',
       width: '30px',
-      height: '30px'
+      height: '850px'//changes the height of the modal
     },
     fullCloseBtn: {
       right: '0',
