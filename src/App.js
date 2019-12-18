@@ -85,7 +85,7 @@ class App extends React.Component {
             <CardInfo />
           </div>
 
-          <button onClick={() => this.toggleShow(true)}>Activate Modal</button>
+          {/* <button onClick={() => this.toggleShow(true)}>Activate Modal</button>
           <Modal open={this.state.show}
             closeBtn={true}
             closeOnEsc={true}
@@ -101,7 +101,7 @@ class App extends React.Component {
             </div>
 
 
-          </Modal>
+          </Modal> */}
         </div>
 
 

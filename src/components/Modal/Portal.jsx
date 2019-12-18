@@ -1,12 +1,12 @@
-import React, { Component } from 'react';
+import React from 'react';
 import ReactDOM from 'react-dom';
 
 const hasCreatePortal = ReactDOM.createPortal !== undefined;
-const createPortal = hasCreatePortal
-  ? ReactDOM.createPortal
-  : ReactDOM.unstable_renderSubtreeIntoContainer;
+// const createPortal = hasCreatePortal
+//   ? ReactDOM.createPortal
+//   : ReactDOM.unstable_renderSubtreeIntoContainer;
 
-export default class Portal extends Component {
+export default class Portal extends React.Component {
   constructor(props) {
     super(props);
     this.el = document.createElement('div');
@@ -23,15 +23,15 @@ export default class Portal extends Component {
     this.renderUnstableSubtree();
   }
 
-  componentDidUpdate() {
-    this.renderUnstableSubtree();
-  }
+  // componentDidUpdate() {
+  //   this.renderUnstableSubtree();
+  // }
 
-  componentWillReceiveProps(nextProps) {
-    if (!nextProps.open) {
-      this.resetBodyOverflow();
-    }
-  }
+  // componentWillReceiveProps(nextProps) {
+  //   if (!nextProps.open) {
+  //     this.resetBodyOverflow();
+  //   }
+  // }
 
   componentWillUnmount() {
     this.removePortal();
