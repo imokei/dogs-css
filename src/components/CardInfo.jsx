@@ -11,11 +11,10 @@ export default class CardInfo extends Component {
 
     componentDidMount(){
         console.log('Card Info Mounted')
+        console.log(this.props);
     }
     render() {
-        if(!this.props.show){
-            return null;
-        }
+
         return (
             <div>
                 <h1>Card Info</h1>

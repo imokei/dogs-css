@@ -1,6 +1,7 @@
 import React from 'react';
 import './App.css';
 
+import Modal from './components/Modal/Modal';
 import NavBar from './components/NavBar';
 import Card from './components/Card';
 import CardInfo from './components/CardInfo'
@@ -15,10 +16,16 @@ class App extends React.Component {
       listOfDogs: [],
       numOfDogs: 9,
       dogData: [],
+      show: false
     }
 
     this.handleRandom = this.handleRandom.bind(this);
     this.makeReq = this.makeReq.bind(this);
+    this.toggleShow = this.toggleShow.bind(this);
+  }
+
+  toggleShow = (isShowing) =>{
+    this.setState({show:isShowing})
   }
 
   makeReq = () => {
@@ -56,12 +63,10 @@ class App extends React.Component {
     //console.log('App Component Updated);
   }
 
-
-
   render() {
     return (
       <div className="App">
-        <NavBar/>
+        <NavBar />
         <h1>Dogs</h1>
         <button onClick={this.handleRandom}>Randomize</button>
         <div className="wrapper">
@@ -75,12 +80,28 @@ class App extends React.Component {
             </div>
 
           ))}
-          <div className = "sideBar">
+          <div className="sideBar">
             <h1> Hello World</h1>
-            <CardInfo/>
+            <CardInfo />
           </div>
 
+          <button onClick={() => this.toggleShow(true)}>Activate Modal</button>
+          <Modal open={this.state.show}
+            closeBtn={true}
+            closeOnEsc={true}
+            onClose={() => this.toggleShow(false)}
+            closeOnOverlay={true}
+          >
+            <div style={{ textAlign: 'center'}}>
+              <div>
+                <h1>Card Info : is Underneath</h1>
+                <CardInfo/>
+              </div>
 
+            </div>
+
+
+          </Modal>
         </div>
 
 

@@ -1,8 +1,7 @@
 import React, { Component } from "react";
 
 import "../styles/Card.css";
-
-import Modal from './Modal';
+import Modal from '../components/Modal/Modal';
 import CardInfo from '../components/CardInfo';
 
 export default class Card extends Component {
@@ -12,22 +11,11 @@ export default class Card extends Component {
             isShowing: false,
 
         }
-        this.openModalHandler = this.openModalHandler.bind(this);
-        this.closeModalHandler = this.closeModalHandler.bind(this);
+        this.toggleShow = this.toggleShow.bind(this);
     }
-
-    openModalHandler = () =>{
-        this.setState({
-            isShowing:true
-        });
+    toggleShow =(shouldShow)=>{
+        this.setState({isShowing:shouldShow})
     }
-
-    closeModalHandler = () =>{
-        this.setState({
-            isShowing:false
-        })
-    }
-
     componentDidMount() {
 
         //console.log("Card Mounted");
@@ -36,21 +24,27 @@ export default class Card extends Component {
     render() {
         return (
             <div className="card">
-               {this.state.isShowing ?<div onClick = {this.closeModalHandler} className = "back-drop"></div>:null}
+                {this.state.isShowing ? <div onClick={this.closeModalHandler} className="back-drop"></div> : null}
                 <div className="img" styles={`{"background-image:url("${this.props.imgUrl}");`}></div>
                 <img src={this.props.imgUrl} alt="img"></img>
                 <div className="container">
                     <h1>Dog</h1>
                     <h2>Dog Info</h2>
-               
-                    <button onClick={this.openModalHandler} className = "open-modal-btn">More Info</button>
-               
-                    <Modal
-                        className = "modal"
-                        show={this.state.isShowing}
-                        close={this.closeModalHandler}
-                        Somet random information
+                    <button onClick={() => this.toggleShow(true)}>Activate Modal</button>
+                    <Modal open={this.state.isShowing}
+                        closeBtn={true}
+                        closeOnEsc={true}
+                        onClose={() => this.toggleShow(false)}
+                        closeOnOverlay={true}
                     >
+                        <div style={{ textAlign: 'center' }}>
+                            <div>
+                                <h1>Card Info : is Underneath</h1>
+                                <CardInfo />
+                            </div>
+
+                        </div>
+
 
                     </Modal>
 
