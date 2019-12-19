@@ -9,7 +9,7 @@ export default class Card extends Component {
         super(props);
         this.state = {
             isShowing: false,
-
+            dogID:1,
         }
         this.toggleShow = this.toggleShow.bind(this);
     }
@@ -24,7 +24,6 @@ export default class Card extends Component {
     render() {
         return (
             <div className="card">
-                {this.state.isShowing ? <div onClick={this.closeModalHandler} className="back-drop"></div> : null}
                 <div className="img" styles={`{"background-image:url("${this.props.imgUrl}");`}></div>
                 <img src={this.props.imgUrl} alt="img"></img>
                 <div className="container">
@@ -40,12 +39,9 @@ export default class Card extends Component {
                         <div style={{ textAlign: 'center' }}>
                             <div>
                                 <h1>Card Info : is Underneath</h1>
-                                <CardInfo />
+                                <CardInfo dogID ={this.state.dogID}/>
                             </div>
-
                         </div>
-
-
                     </Modal>
 
                 </div>
